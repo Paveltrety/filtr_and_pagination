@@ -1,12 +1,12 @@
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import photoReducer from "./reducers/photoReducer";
+import imagesReducer from "./reducers/imagesReducer";
 import projectSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducers = combineReducers({
-  photo: photoReducer,
+  images: imagesReducer,
 });
 
 export type stateType = ReturnType<typeof reducers>;

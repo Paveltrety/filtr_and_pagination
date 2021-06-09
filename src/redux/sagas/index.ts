@@ -1,24 +1,8 @@
-import { PhotosState, Result } from "./../types";
-import { call, put, takeEvery } from "redux-saga/effects";
-import { getPhotosApi } from "../../api/api";
+import { takeEvery } from "redux-saga/effects";
 import { TYPES } from "../actions/actionsTypes";
-import { setPhotosData } from "../actions/actions";
+import { getPhotosSaga } from "./imagesSaga";
+
 export default function* projectSaga() {
-  yield takeEvery(TYPES.GET_PHOTOS, getPhotosSaga);
+  yield takeEvery(TYPES.GET_IMAGES, getPhotosSaga);
 }
 
-export function* getPhotosSaga() {
-  try {
-    const { result, error }: Result<Array<PhotosState>> = yield call(
-      getPhotosApi
-    );
-    if (error) {
-      throw new Error(error);
-    }
-    if (result) {
-      yield put(setPhotosData(result));
-    }
-  } catch (e) {
-    console.log(e, "ОШИБКА В САГЕ");
-  }
-}
