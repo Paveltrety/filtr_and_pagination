@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {}, [dispatch]);
 
   return (
-    <div className="app">
+    <div className="wrapper">
       <Filter />
       <Photos />
       <Pagination />
