@@ -1,16 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./App.css";
-import { getPhotos } from "./redux/actions/actions";
+import Filter from "./components/filter/Filter";
+import Pagination from "./components/pagination/Pagination";
+import Photos from "./components/photos/Photos";
 
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPhotos());
-  }, [dispatch]);
+  useEffect(() => {}, [dispatch]);
 
-  return <div className="App"></div>;
+  return (
+    <div className="app">
+      <Filter />
+      <Photos />
+      <Pagination />
+    </div>
+  );
 }
 
 export default App;

@@ -1,5 +1,8 @@
 export type InitialState = {
-  photos: Array<PhotosState>;
+  images: Array<PhotosState>;
+  displayImages: Array<PhotosState>;
+  totalNumberPages: number;
+  currentPage: number;
 };
 
 export type PhotosState = {
