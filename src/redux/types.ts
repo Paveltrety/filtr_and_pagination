@@ -3,6 +3,7 @@ export type InitialState = {
   displayImages: Array<PhotosState>;
   totalNumberPages: number;
   currentPage: number;
+  currentFilter: number | null;
 };
 
 export type PhotosState = {

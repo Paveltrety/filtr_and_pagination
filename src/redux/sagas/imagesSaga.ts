@@ -1,20 +1,36 @@
-import { setDisplayImages } from "./../actions/actions";
-import { setImagesData } from "../actions/actions";
-import { getPhotosApi } from "../../api/api";
+import { setCurrentFilter, setImagesData } from "../actions/actions";
+import { getImagesApi, getImagesFilterApi } from "../../api/api";
 import { call, put } from "redux-saga/effects";
-import { PhotosState, Result } from "./../types";
+import { PhotosState as ImagesState, Result } from "./../types";
 
-export function* getPhotosSaga() {
+export function* getImagesSaga() {
   try {
-    const { result, error }: Result<Array<PhotosState>> = yield call(
-      getPhotosApi
+    const { result, error }: Result<Array<ImagesState>> = yield call(
+      getImagesApi
     );
     if (error) {
       throw new Error(error);
     }
     if (result) {
       yield put(setImagesData(result));
-      yield put(setDisplayImages(result.slice(0, 10)));
+    }
+  } catch (e) {
+    console.log(e, "ОШИБКА В САГЕ");
+  }
+}
+
+export function* getImagesFilterSaga({ payload: idAlbum }: any) {
+  try {
+    const { result, error }: Result<Array<ImagesState>> = yield call(
+      getImagesFilterApi,
+      idAlbum
+    );
+    if (error) {
+      throw new Error(error);
+    }
+    if (result) {
+      yield put(setImagesData(result));
+      yield put(setCurrentFilter(idAlbum))
     }
   } catch (e) {
     console.log(e, "ОШИБКА В САГЕ");

@@ -10,7 +10,7 @@ const Pagination = () => {
     currentPage: state.images.currentPage,
   }));
 
-  const pages: any = [];
+  const pages: Array<number> = [];
   createPages(pages, totalNumberPages, currentPage);
 
   return (
