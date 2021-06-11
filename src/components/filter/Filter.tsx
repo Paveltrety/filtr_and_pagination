@@ -19,7 +19,13 @@ const Filter = () => {
           <FilterItem key={item} item={item} currentFilter={currentFilter} />
         );
       })}
-      <button onClick={handleClearFilter}>Очистить фильтр</button>
+      <button
+        className="filter__item"
+        disabled={!currentFilter}
+        onClick={handleClearFilter}
+      >
+        Clear
+      </button>
     </div>
   );
 };

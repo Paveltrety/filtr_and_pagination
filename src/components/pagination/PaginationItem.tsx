@@ -1,29 +1,24 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { setCurrentPage } from "../../redux/actions/actions";
-
 type Props = {
   number: number;
   currentPage: number;
+  handleSelectPage: (numberPage: number) => void;
 };
-const PaginationItem: React.FC<Props> = ({ number, currentPage }) => {
-  const dispatch = useDispatch();
-  const handleSelectPage = () => {
-    dispatch(setCurrentPage(number));
-  };
+const PaginationItem: React.FC<Props> = ({
+  number,
+  currentPage,
+  handleSelectPage,
+}) => {
   return (
-    <span
-      style={
+    <button
+      className={
         number === currentPage
-          ? {
-              color: "red",
-            }
-          : {}
+          ? "pagination__item pagination__active"
+          : "pagination__item"
       }
-      onClick={handleSelectPage}
+      onClick={() => handleSelectPage(number)}
     >
       {number}
-    </span>
+    </button>
   );
 };
 

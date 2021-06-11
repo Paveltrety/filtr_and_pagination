@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImages } from "../../redux/actions/actions";
 import { stateType } from "../../redux/store";
+import ImagesItem from "./ImagesItem";
 
-const Photos = () => {
+const Images = () => {
   const dispatch = useDispatch();
-  const displayPhotos = useSelector(
+  const displayImages = useSelector(
     (state: stateType) => state.images.displayImages
   );
 
@@ -14,14 +15,18 @@ const Photos = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {displayPhotos.map((image) => {
+    <div className="photo">
+      {displayImages.map((image) => {
         return (
-          <img key={image.id} src={image.thumbnailUrl} alt={image.title}></img>
+          <ImagesItem
+            key={image.id}
+            src={image.thumbnailUrl}
+            title={image.title}
+          />
         );
       })}
     </div>
   );
 };
 
-export default Photos;
+export default Images;

@@ -1,4 +1,4 @@
-import { PhotosState } from "../types";
+import { ImagesState } from "./../types";
 import { TYPES } from "./actionsTypes";
 
 export const getImages = () => ({
@@ -10,9 +10,9 @@ export const getImagesFilter = (idAlbum: number) => ({
   payload: idAlbum,
 });
 
-export const setImagesData = (photos: Array<PhotosState>) => ({
+export const setImagesData = (images: Array<ImagesState>) => ({
   type: TYPES.SET_IMAGES_DATA,
-  payload: photos,
+  payload: images,
 });
 
 export const setCurrentPage = (numberPage: number) => ({

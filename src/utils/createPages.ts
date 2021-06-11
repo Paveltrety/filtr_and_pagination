@@ -1,5 +1,5 @@
 export function createPages(
-  pages: any,
+  pages: Array<number>,
   pagesCount: number,
   currentPage: number
 ) {

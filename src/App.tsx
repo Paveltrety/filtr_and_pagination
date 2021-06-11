@@ -1,19 +1,18 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import "./App.css";
+import { useSelector } from "react-redux";
 import Filter from "./components/filter/Filter";
 import Pagination from "./components/pagination/Pagination";
-import Photos from "./components/photos/Photos";
+import Images from "./components/images/Images";
+import { stateType } from "./redux/store";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {}, [dispatch]);
-
+  const currentFilter = useSelector(
+    (state: stateType) => state.images.currentFilter
+  );
   return (
     <div className="wrapper">
       <Filter />
-      <Photos />
+      <h1 className='title'> {currentFilter ? `Images album ${currentFilter}` : "All images"}</h1>
+      <Images />
       <Pagination />
     </div>
   );

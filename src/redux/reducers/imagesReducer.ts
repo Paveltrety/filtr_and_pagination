@@ -1,5 +1,5 @@
 import { TYPES } from "../actions/actionsTypes";
-import { InitialState } from "../types";
+import { ActionImagesReducerType, InitialState } from "../types";
 
 const initialState: InitialState = {
   images: [],
@@ -10,7 +10,7 @@ const initialState: InitialState = {
 };
 const imagesReducer = (
   state: InitialState = initialState,
-  action: any
+  action: ActionImagesReducerType
 ): InitialState => {
   switch (action.type) {
     case TYPES.SET_IMAGES_DATA: {
