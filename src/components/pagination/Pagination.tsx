@@ -41,7 +41,7 @@ const Pagination = () => {
         className="pagination__item-text"
         onClick={() => handleSelectPage(totalNumberPages)}
       >
-        finish
+        finish test
       </button>
     </div>
   );
